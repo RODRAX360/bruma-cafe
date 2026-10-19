@@ -8,9 +8,9 @@ La app de **Unity para Android con ARCore** abre la cámara RA. Cuando empieza e
 
 ## Abrir y compilar la app Android
 
-1. Abre la carpeta **`UnityProject`** de este repositorio en **Unity 2022.3** con los módulos **Android Build Support**, **SDK/NDK Tools** y **OpenJDK** instalados.
-2. Espera a que Unity importe **AR Foundation 5.0.6**, **ARCore XR Plugin 5.0.6** y **XR Plug-in Management 4.3.3** de `UnityProject/Packages/manifest.json`.
-3. En Unity, selecciona **Cafetería → Crear escena AR**. La escena `UnityProject/Assets/MenuAR.unity` tendrá **AR Session**, **XR Origin (Mobile AR)** y **AR Camera**, con el QR cargado como textura sin compresión.
+1. Abre la carpeta **`UnityProject`** de este repositorio en **Unity 2023.1.22f1** con los módulos **Android Build Support**, **SDK/NDK Tools** y **OpenJDK** instalados.
+2. Espera a que Unity importe **AR Foundation 5.1.0**, **ARCore XR Plugin 5.1.0** y **XR Plug-in Management 4.4.0** de `UnityProject/Packages/manifest.json`.
+3. Abre `UnityProject/Assets/MenuAR.unity`. La escena ya incluye **AR Session**, **XR Origin (Mobile AR)**, **AR Camera** y el panel QR. Si necesitas reconstruirla, usa **Cafetería → Crear escena AR**.
 4. Ve a **File → Build Settings**, selecciona **Android** y pulsa **Switch Platform**.
 5. En **Edit → Project Settings → XR Plug-in Management → Android**, activa **ARCore**. Revisa las recomendaciones de **Project Validation**.
 6. Conecta un Android compatible con ARCore, concede permiso de cámara y usa **Build And Run**.

@@ -5,34 +5,26 @@ using UnityEngine.XR.ARFoundation;
 public sealed class ARMenuQrPresenter : MonoBehaviour
 {
     [SerializeField] private Camera arCamera;
-    [SerializeField] private Material qrMaterial;
-    private GameObject panel;
+    [SerializeField] private GameObject panel;
     private string menuUrl;
     private GUIStyle titleStyle;
     private GUIStyle noteStyle;
 
-    public void Configure(Camera camera, Material material)
+    public void Configure(Camera camera, GameObject qrPanel)
     {
         arCamera = camera;
-        qrMaterial = material;
+        panel = qrPanel;
     }
 
     private void Awake()
     {
         var url = Resources.Load<TextAsset>("menu-url");
         menuUrl = url != null ? url.text.Trim() : "";
-        var texture = Resources.Load<Texture2D>("menu-qr");
-        if (texture == null || qrMaterial == null)
+        if (panel == null)
         {
-            Debug.LogError("Falta el QR o su material. Vuelve a crear la escena desde Cafetería > Crear escena AR.");
+            Debug.LogError("Falta el panel QR. Vuelve a crear la escena desde Cafetería > Crear escena AR.");
             return;
         }
-        var material = new Material(qrMaterial);
-        material.mainTexture = texture;
-        panel = GameObject.CreatePrimitive(PrimitiveType.Quad);
-        panel.name = "QR del menú · panel AR";
-        panel.GetComponent<MeshRenderer>().material = material;
-        panel.transform.localScale = new Vector3(0.42f, 0.42f, 1f);
         panel.SetActive(false);
     }
 

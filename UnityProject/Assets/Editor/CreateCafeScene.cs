@@ -6,6 +6,16 @@ using UnityEngine.XR.ARFoundation;
 
 public static class CreateCafeScene
 {
+    [InitializeOnLoadMethod]
+    private static void CreateSceneOnFirstOpen()
+    {
+        EditorApplication.delayCall += () =>
+        {
+            if (!File.Exists("Assets/MenuAR.unity") && !EditorApplication.isCompiling)
+                CreateScene();
+        };
+    }
+
     [MenuItem("Cafetería/Crear escena AR")]
     public static void CreateScene()
     {
@@ -23,7 +33,7 @@ public static class CreateCafeScene
             return;
         }
         var camera = Camera.main;
-        if (camera == null) camera = Object.FindObjectOfType<Camera>();
+        if (camera == null) camera = Object.FindFirstObjectByType<Camera>();
         if (camera == null)
         {
             Debug.LogError("XR Origin no creó la AR Camera.");
@@ -32,7 +42,7 @@ public static class CreateCafeScene
         if (camera.GetComponent<ARCameraManager>() == null) camera.gameObject.AddComponent<ARCameraManager>();
         if (camera.GetComponent<ARCameraBackground>() == null) camera.gameObject.AddComponent<ARCameraBackground>();
         camera.name = "AR Camera";
-        var session = Object.FindObjectOfType<ARSession>();
+        var session = Object.FindFirstObjectByType<ARSession>();
         if (session != null && session.GetComponent<ARInputManager>() == null)
             session.gameObject.AddComponent<ARInputManager>();
 
@@ -55,8 +65,18 @@ public static class CreateCafeScene
             importer.textureCompression = TextureImporterCompression.Uncompressed;
             importer.SaveAndReimport();
         }
+        var texture = AssetDatabase.LoadAssetAtPath<Texture2D>(texturePath);
+        if (texture == null) { Debug.LogError("No se encontró menu-qr.png."); return; }
+        material.mainTexture = texture;
+        EditorUtility.SetDirty(material);
+        var qrPanel = GameObject.CreatePrimitive(PrimitiveType.Quad);
+        qrPanel.name = "QR del menú · panel AR";
+        qrPanel.GetComponent<MeshRenderer>().sharedMaterial = material;
+        qrPanel.transform.localScale = new Vector3(0.42f, 0.42f, 1f);
+        qrPanel.transform.position = camera.transform.position + camera.transform.forward * 0.85f;
+        qrPanel.transform.rotation = Quaternion.LookRotation(camera.transform.position - qrPanel.transform.position, Vector3.up);
         var presenter = new GameObject("Bruma Café · QR en realidad aumentada").AddComponent<ARMenuQrPresenter>();
-        presenter.Configure(camera, material);
+        presenter.Configure(camera, qrPanel);
         PlayerSettings.productName = "Bruma Café RA";
         PlayerSettings.defaultInterfaceOrientation = UIOrientation.Portrait;
         PlayerSettings.Android.minSdkVersion = AndroidSdkVersions.AndroidApiLevel24;
