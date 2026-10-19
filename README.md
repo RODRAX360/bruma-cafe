@@ -1,7 +1,7 @@
-# Bruma Café · carta digital con QR
+# Bruma Café · carta PDF con QR
 
-El QR abre la [página de la carta de Bruma Café](https://rodrax360.github.io/bruma-cafe/) en GitHub Pages. La página está en `docs/index.html`. El afiche editable en Illustrator está en `design/afiche-illustrator.svg`, y el QR está disponible en `design/menu-qr.svg` y `design/menu-qr.png`.
+El QR abre directamente [esta carta PDF](https://rodrax360.github.io/bruma-cafe/carta.pdf), que corresponde al archivo [`docs/carta.pdf`](docs/carta.pdf) señalado para el proyecto. La dirección principal de GitHub Pages redirige al mismo PDF.
 
-Para cambiar el destino del QR, ejecuta `python3 generar_qr.py 'https://NUEVA-URL/'` después de instalar `qrcode[pil]`.
+El QR está en `design/menu-qr.png` y `design/menu-qr.svg`. El afiche editable en Illustrator está en `design/afiche-illustrator.svg`. Para cambiar el destino, ejecuta `python3 generar_qr.py 'https://NUEVA-URL/carta.pdf'` después de instalar `qrcode[pil]`.
 
-El PDF `docs/carta.pdf` y el proyecto de Unity permanecen en el repositorio como material adicional. Para abrir la página mediante el QR, basta con escanearlo con un celular.
+El proyecto Unity sigue incluido, con el mismo QR y enlace directo al PDF. Para escanear el QR con un celular, no es necesario abrir Unity.
