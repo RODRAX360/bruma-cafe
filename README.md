@@ -8,9 +8,9 @@ La app de **Unity para Android con ARCore** abre la cámara RA. Cuando empieza e
 
 ## Abrir y compilar la app Android
 
-1. Abre este repositorio en **Unity 2022.3** con los módulos **Android Build Support**, **SDK/NDK Tools** y **OpenJDK** instalados.
-2. Espera a que Unity importe **AR Foundation 5.0.6**, **ARCore XR Plugin 5.0.6** y **XR Plug-in Management 4.3.3** del `Packages/manifest.json`.
-3. En Unity, selecciona **Cafetería → Crear escena AR**. La escena `Assets/MenuAR.unity` tendrá **AR Session**, **XR Origin (Mobile AR)** y **AR Camera**, con el QR cargado como textura sin compresión.
+1. Abre la carpeta **`UnityProject`** de este repositorio en **Unity 2022.3** con los módulos **Android Build Support**, **SDK/NDK Tools** y **OpenJDK** instalados.
+2. Espera a que Unity importe **AR Foundation 5.0.6**, **ARCore XR Plugin 5.0.6** y **XR Plug-in Management 4.3.3** de `UnityProject/Packages/manifest.json`.
+3. En Unity, selecciona **Cafetería → Crear escena AR**. La escena `UnityProject/Assets/MenuAR.unity` tendrá **AR Session**, **XR Origin (Mobile AR)** y **AR Camera**, con el QR cargado como textura sin compresión.
 4. Ve a **File → Build Settings**, selecciona **Android** y pulsa **Switch Platform**.
 5. En **Edit → Project Settings → XR Plug-in Management → Android**, activa **ARCore**. Revisa las recomendaciones de **Project Validation**.
 6. Conecta un Android compatible con ARCore, concede permiso de cámara y usa **Build And Run**.
@@ -23,7 +23,7 @@ El sitio web está en `docs/index.html`. En [Settings → Pages](https://github.
 
 ## Illustrator y contenido
 
-`design/afiche-illustrator.svg` es un afiche vectorial editable en Illustrator. `design/logo-taza.svg` contiene el logotipo. Para modificar el menú, edita `docs/index.html`. `data/menu.json` es una copia estructurada del contenido de muestra. Si cambia la URL de la web, ejecuta `python3 -m pip install qrcode[pil]` y luego `python3 generar_qr.py 'https://NUEVA-URL/'` antes de volver a compilar la app.
+`design/afiche-illustrator.svg` es un afiche vectorial editable en Illustrator. `design/logo-taza.svg` contiene el logotipo. Para modificar el menú, edita `docs/index.html`. `data/menu.json` es una copia estructurada del contenido de muestra. Si cambia la URL de la web, desde la raíz del repositorio ejecuta `python3 -m pip install qrcode[pil]` y luego `python3 generar_qr.py 'https://NUEVA-URL/'` antes de volver a compilar la app.
 
 ## Verificación
 

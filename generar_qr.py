@@ -39,12 +39,12 @@ def generate(url):
     svg=f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {n} {n}" shape-rendering="crispEdges"><rect width="{n}" height="{n}" fill="#fff"/><g fill="#000">{cells}</g></svg>'
     (ROOT/'design/menu-qr.svg').write_text(svg, encoding='utf-8')
     qr.make_image(fill_color='black', back_color='white').save(ROOT/'design/menu-qr.png')
-    qr.make_image(fill_color='black', back_color='white').save(ROOT/'Assets/Resources/menu-qr.png')
+    qr.make_image(fill_color='black', back_color='white').save(ROOT/'UnityProject/Assets/Resources/menu-qr.png')
     qr.make_image(fill_color='black', back_color='white').save(ROOT/'docs/menu-qr.png')
     scale=358/n
     markup=f'<svg x="218" y="450" width="358" height="358" viewBox="0 0 {n} {n}" shape-rendering="crispEdges"><rect width="{n}" height="{n}" fill="#fff"/><g fill="#000">{cells}</g></svg>'
     (ROOT/'design/afiche-illustrator.svg').write_text(poster(markup, 'Apunta con la cámara de tu móvil'), encoding='utf-8')
-    (ROOT/'Assets/Resources/menu-url.txt').write_text(url+'\n', encoding='utf-8')
+    (ROOT/'UnityProject/Assets/Resources/menu-url.txt').write_text(url+'\n', encoding='utf-8')
     page=ROOT/'docs/index.html'
     page_html=page.read_text(encoding='utf-8')
     safe_url=html.escape(url, quote=True)
