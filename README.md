@@ -1,31 +1,30 @@
-# Bruma Café · carta web y proyecto Unity
+# Bruma Café · menú en realidad aumentada
 
-**Bruma Café** es un nombre provisional para la nueva cafetería; puede cambiarse por la marca definitiva.
+**Bruma Café** es un nombre provisional. Esta es una cafetería nueva, con paleta marrón y taza minimalista. Productos y precios son ejemplos editables. El PDF de Gatú se usó solo como inspiración general.
 
-Cafetería nueva de muestra. El PDF proporcionado sirvió solo como referencia general de cafetería; el menú, la marca y el afiche de este proyecto son nuevos. Productos y precios son ejemplos editables.
+## Cómo funciona
 
-## Publicar la carta en GitHub Pages
+La app de **Unity para Android con ARCore** abre la cámara RA. Cuando empieza el seguimiento, muestra un panel con el QR en el espacio frente al usuario. Ese QR lleva a la [carta digital](https://rodrax360.github.io/bruma-cafe/) alojada en GitHub Pages. Se puede pulsar **Centrar QR** para colocarlo de nuevo. Para abrir la carta en el mismo móvil, se pulsa **Abrir carta**; un QR mostrado en la propia pantalla requiere otro dispositivo para escanearlo.
 
-1. El proyecto se encuentra en `https://github.com/RODRAX360/bruma-cafe`.
-2. En el repositorio, abre **Settings → Pages**. En **Build and deployment**, selecciona **Deploy from a branch**, rama `main` y carpeta `/docs`. Guarda los cambios.
-3. Comprueba que la carta abre en `https://rodrax360.github.io/bruma-cafe/`.
-4. El QR ya está generado para `https://rodrax360.github.io/bruma-cafe/`. Si cambia el nombre del repositorio o la URL pública, ejecuta `python3 -m pip install qrcode[pil]` y luego `python3 generar_qr.py 'https://NUEVA-URL/'`.
-5. El QR está incluido en `design`, `docs` y `Assets/Resources`. Comprueba que GitHub Pages esté activo antes de imprimirlo.
+## Abrir y compilar la app Android
 
-La página del repositorio muestra archivos. La URL de GitHub Pages abre la carta directamente y es el destino configurado en el QR.
+1. Abre este repositorio en **Unity 2022.3** con los módulos **Android Build Support**, **SDK/NDK Tools** y **OpenJDK** instalados.
+2. Espera a que Unity importe **AR Foundation 5.0.6**, **ARCore XR Plugin 5.0.6** y **XR Plug-in Management 4.3.3** del `Packages/manifest.json`.
+3. En Unity, selecciona **Cafetería → Crear escena AR**. La escena `Assets/MenuAR.unity` tendrá **AR Session**, **XR Origin (Mobile AR)** y **AR Camera**, con el QR cargado como textura sin compresión.
+4. Ve a **File → Build Settings**, selecciona **Android** y pulsa **Switch Platform**.
+5. En **Edit → Project Settings → XR Plug-in Management → Android**, activa **ARCore**. Revisa las recomendaciones de **Project Validation**.
+6. Conecta un Android compatible con ARCore, concede permiso de cámara y usa **Build And Run**.
 
-## Unity
+La escena AR se crea dentro del editor porque sus objetos dependen de los paquetes XR importados. No se puede comprobar el seguimiento de ARCore en el editor sin un dispositivo Android compatible.
 
-Abre la carpeta en Unity Hub con Unity 2022.3. En el editor, selecciona **Cafetería → Crear escena del menú**. Pulsa Play para revisar la carta. Para una versión Unity WebGL, cambia la plataforma a WebGL en Build Settings y compila. El botón de Unity abre la misma URL de la carta cuando el QR está configurado.
+## Publicar la carta
 
-## Illustrator
+El sitio web está en `docs/index.html`. En [Settings → Pages](https://github.com/RODRAX360/bruma-cafe/settings/pages), elige **Deploy from a branch**, rama **main** y carpeta **/docs**. Después comprueba que abra [https://rodrax360.github.io/bruma-cafe/](https://rodrax360.github.io/bruma-cafe/). El QR ya está generado para esa URL; actívala antes de imprimirlo.
 
-Abre `design/afiche-illustrator.svg` en Illustrator. Contiene el QR completo en vectores. El diseño y el QR siguen siendo editables.
+## Illustrator y contenido
 
-## Editar contenido
-
-Modifica `docs/index.html` para la carta web y `Assets/Resources/menu.txt` para Unity. `data/menu.json` conserva una copia estructurada de la carta de muestra. Ajusta también nombre, colores y textos del sitio, el script de Unity y el afiche según la marca final.
+`design/afiche-illustrator.svg` es un afiche vectorial editable en Illustrator. `design/logo-taza.svg` contiene el logotipo. Para modificar el menú, edita `docs/index.html`. `data/menu.json` es una copia estructurada del contenido de muestra. Si cambia la URL de la web, ejecuta `python3 -m pip install qrcode[pil]` y luego `python3 generar_qr.py 'https://NUEVA-URL/'` antes de volver a compilar la app.
 
 ## Verificación
 
-Se revisaron estructura, HTML, JSON y SVG. Unity e Illustrator no están instalados en este entorno, por lo que no se pudo ejecutar el proyecto ni abrir el afiche en esas aplicaciones.
+Se validó la estructura del proyecto, los archivos web y SVG, y se generó el QR para la URL de GitHub Pages. En este entorno no hay Unity ni un Android con ARCore, así que falta compilar y probar la app en un dispositivo real.
