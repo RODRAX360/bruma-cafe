@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Genera QR PNG/SVG y afiche SVG editable para la carta PDF pública."""
+"""Genera QR PNG/SVG y afiche SVG editable para la carta pública."""
 import argparse
 import sys
 from pathlib import Path
@@ -42,10 +42,10 @@ def generate(url):
     markup=f'<svg x="218" y="450" width="358" height="358" viewBox="0 0 {n} {n}" shape-rendering="crispEdges"><rect width="{n}" height="{n}" fill="#fff"/><g fill="#000">{cells}</g></svg>'
     (ROOT/'design/afiche-illustrator.svg').write_text(poster(markup, 'Apunta con la cámara de tu móvil'), encoding='utf-8')
     (ROOT/'UnityProject/Assets/Resources/menu-url.txt').write_text(url+'\n', encoding='utf-8')
-    print('QR y afiche listos en design/; enlace directo al PDF guardado para Unity.')
+    print('QR y afiche listos en design/; enlace guardado para Unity.')
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
-    parser.add_argument('url', nargs='?', help='URL pública HTTPS de la carta PDF')
+    parser.add_argument('url', nargs='?', help='URL pública HTTPS de la carta')
     args=parser.parse_args()
     generate(args.url) if args.url else placeholder()
