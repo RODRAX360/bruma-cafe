@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="420" viewBox="0 0 600 420" role="img" aria-label="Bruma Café, taza minimalista">
+<rect width="600" height="420" fill="#f7f1e8"/>
+<g fill="none" stroke="#4b3026" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+<path d="M180 92H360V189C360 241 320 273 270 273C220 273 180 241 180 189V92Z"/>
+<path d="M360 114H387C430 114 445 151 424 178C410 196 388 200 360 200"/>
+<path d="M228 71C214 56 230 42 239 27M282 71C268 56 284 42 293 27"/>
+<path d="M157 283H400"/>
+</g>
+<text x="300" y="355" text-anchor="middle" fill="#4b3026" font-family="Georgia,serif" font-size="58" letter-spacing="8">BRUMA</text>
+<text x="300" y="389" text-anchor="middle" fill="#4b3026" font-family="Arial,sans-serif" font-size="17" letter-spacing="7">CAFÉ</text>
+</svg>

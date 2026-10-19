@@ -6,13 +6,13 @@ Cafetería nueva de muestra. El PDF proporcionado sirvió solo como referencia g
 
 ## Publicar la carta en GitHub Pages
 
-1. Crea un repositorio público de GitHub y sube **todo el contenido de esta carpeta** a la raíz del repositorio.
+1. El proyecto se encuentra en `https://github.com/RODRAX360/bruma-cafe`.
 2. En el repositorio, abre **Settings → Pages**. En **Build and deployment**, selecciona **Deploy from a branch**, rama `main` y carpeta `/docs`. Guarda los cambios.
-3. Espera la URL pública, normalmente `https://USUARIO.github.io/REPOSITORIO/`. Comprueba que abre `docs/index.html`.
+3. Comprueba que la carta abre en `https://rodrax360.github.io/bruma-cafe/`.
 4. El QR ya está generado para `https://rodrax360.github.io/bruma-cafe/`. Si cambia el nombre del repositorio o la URL pública, ejecuta `python3 -m pip install qrcode[pil]` y luego `python3 generar_qr.py 'https://NUEVA-URL/'`.
 5. El QR está incluido en `design`, `docs` y `Assets/Resources`. Comprueba que GitHub Pages esté activo antes de imprimirlo.
 
-La página del repositorio (`github.com/USUARIO/REPOSITORIO`) muestra archivos. La URL de GitHub Pages (`USUARIO.github.io/REPOSITORIO`) abre la carta directamente; esta es la URL recomendada para el QR.
+La página del repositorio muestra archivos. La URL de GitHub Pages abre la carta directamente y es el destino configurado en el QR.
 
 ## Unity
 

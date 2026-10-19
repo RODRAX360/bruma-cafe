@@ -1,0 +1,129 @@
+{
+  "categories": [
+    {
+      "name": "Café de especialidad",
+      "items": [
+        [
+          "Espresso",
+          8
+        ],
+        [
+          "Americano",
+          10
+        ],
+        [
+          "Cortado",
+          11
+        ],
+        [
+          "Cappuccino",
+          13
+        ],
+        [
+          "Latte",
+          14
+        ],
+        [
+          "Moca",
+          16
+        ],
+        [
+          "Cold brew",
+          16
+        ]
+      ]
+    },
+    {
+      "name": "Otras bebidas",
+      "items": [
+        [
+          "Chocolate caliente",
+          14
+        ],
+        [
+          "Matcha latte",
+          16
+        ],
+        [
+          "Chai latte",
+          15
+        ],
+        [
+          "Té de la casa",
+          10
+        ],
+        [
+          "Limonada",
+          12
+        ],
+        [
+          "Jugo de temporada",
+          14
+        ]
+      ]
+    },
+    {
+      "name": "Desayunos",
+      "items": [
+        [
+          "Tostadas con palta",
+          21
+        ],
+        [
+          "Croissant con jamón y queso",
+          18
+        ],
+        [
+          "Bowl de frutas y yogur",
+          20
+        ],
+        [
+          "Huevos al gusto con pan artesanal",
+          24
+        ]
+      ]
+    },
+    {
+      "name": "Para almorzar",
+      "items": [
+        [
+          "Sándwich de pollo",
+          25
+        ],
+        [
+          "Quiche de verduras",
+          23
+        ],
+        [
+          "Ensalada de temporada",
+          26
+        ],
+        [
+          "Focaccia caprese",
+          24
+        ]
+      ]
+    },
+    {
+      "name": "Postres",
+      "items": [
+        [
+          "Cookie de chocolate",
+          9
+        ],
+        [
+          "Brownie",
+          12
+        ],
+        [
+          "Torta de zanahoria",
+          17
+        ],
+        [
+          "Cheesecake del día",
+          18
+        ]
+      ]
+    }
+  ]
+}
