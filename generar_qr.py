@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
-"""Genera QR PNG/SVG y afiche SVG editable en Illustrator para una página pública de GitHub Pages."""
+"""Genera QR PNG/SVG y afiche SVG editable para la carta PDF pública."""
 import argparse
-import html
-import re
 import sys
 from pathlib import Path
 from urllib.parse import urlparse
@@ -40,21 +38,14 @@ def generate(url):
     (ROOT/'design/menu-qr.svg').write_text(svg, encoding='utf-8')
     qr.make_image(fill_color='black', back_color='white').save(ROOT/'design/menu-qr.png')
     qr.make_image(fill_color='black', back_color='white').save(ROOT/'UnityProject/Assets/Resources/menu-qr.png')
-    qr.make_image(fill_color='black', back_color='white').save(ROOT/'docs/menu-qr.png')
     scale=358/n
     markup=f'<svg x="218" y="450" width="358" height="358" viewBox="0 0 {n} {n}" shape-rendering="crispEdges"><rect width="{n}" height="{n}" fill="#fff"/><g fill="#000">{cells}</g></svg>'
     (ROOT/'design/afiche-illustrator.svg').write_text(poster(markup, 'Apunta con la cámara de tu móvil'), encoding='utf-8')
     (ROOT/'UnityProject/Assets/Resources/menu-url.txt').write_text(url+'\n', encoding='utf-8')
-    page=ROOT/'docs/index.html'
-    page_html=page.read_text(encoding='utf-8')
-    safe_url=html.escape(url, quote=True)
-    replacement='<div id="qr-box" class="qr-box"><a href="'+safe_url+'" target="_blank" rel="noopener"><img src="menu-qr.png" alt="Código QR para abrir el menú web"></a><p>Escanea para ver nuestra carta.</p></div>'
-    page_html=re.sub(r'<div id="qr-box" class="qr-box">.*?</div>', replacement, page_html, count=1, flags=re.DOTALL)
-    page.write_text(page_html, encoding='utf-8')
-    print('QR y afiche listos en design/; enlace guardado para Unity.')
+    print('QR y afiche listos en design/; enlace directo al PDF guardado para Unity.')
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
-    parser.add_argument('url', nargs='?', help='URL pública HTTPS del menú en GitHub Pages')
+    parser.add_argument('url', nargs='?', help='URL pública HTTPS de la carta PDF')
     args=parser.parse_args()
     generate(args.url) if args.url else placeholder()

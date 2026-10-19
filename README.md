@@ -1,30 +1,11 @@
-# Bruma Café · menú en realidad aumentada
+# Bruma Café · carta PDF en realidad aumentada
 
-**Bruma Café** es un nombre provisional. Esta es una cafetería nueva, con paleta marrón y taza minimalista. Productos y precios son ejemplos editables. El PDF de Gatú se usó solo como inspiración general.
+La carta es el PDF [`docs/carta.pdf`](docs/carta.pdf), basado en la carta de Gatú proporcionada como ejemplo. Se conserva su disposición y contenido y se reemplazan los logos visibles por el de Bruma Café. Algunos nombres y descripciones de productos aún mencionan Gatú porque el cambio solicitado fue únicamente de logo.
 
-## Cómo funciona
+## Enlace y QR
 
-La app de **Unity para Android con ARCore** abre la cámara RA. Cuando empieza el seguimiento, muestra un panel con el QR en el espacio frente al usuario. Ese QR lleva a la [carta digital](https://rodrax360.github.io/bruma-cafe/) alojada en GitHub Pages. Se puede pulsar **Centrar QR** para colocarlo de nuevo. Para abrir la carta en el mismo móvil, se pulsa **Abrir carta**; un QR mostrado en la propia pantalla requiere otro dispositivo para escanearlo.
+El código QR abre directamente [la carta PDF publicada](https://rodrax360.github.io/bruma-cafe/carta.pdf). `docs/index.html` redirige a ese mismo PDF. El afiche editable en Illustrator está en `design/afiche-illustrator.svg`; el QR vectorial, en `design/menu-qr.svg`. Para regenerar los QR al cambiar la URL: `python3 generar_qr.py 'https://NUEVA-URL/carta.pdf'` (requiere `qrcode[pil]`).
 
-## Abrir y compilar la app Android
+## Unity para Android
 
-1. Abre la carpeta **`UnityProject`** de este repositorio en **Unity 2023.1.22f1** con los módulos **Android Build Support**, **SDK/NDK Tools** y **OpenJDK** instalados.
-2. Espera a que Unity importe **AR Foundation 5.1.0**, **ARCore XR Plugin 5.1.0** y **XR Plug-in Management 4.4.0** de `UnityProject/Packages/manifest.json`.
-3. Abre `UnityProject/Assets/MenuAR.unity`. La escena ya incluye **AR Session**, **XR Origin (Mobile AR)**, **AR Camera** y el panel QR. Si necesitas reconstruirla, usa **Cafetería → Crear escena AR**.
-4. Ve a **File → Build Settings**, selecciona **Android** y pulsa **Switch Platform**.
-5. En **Edit → Project Settings → XR Plug-in Management → Android**, activa **ARCore**. Revisa las recomendaciones de **Project Validation**.
-6. Conecta un Android compatible con ARCore, concede permiso de cámara y usa **Build And Run**.
-
-La escena AR se crea dentro del editor porque sus objetos dependen de los paquetes XR importados. No se puede comprobar el seguimiento de ARCore en el editor sin un dispositivo Android compatible.
-
-## Publicar la carta
-
-El sitio web está en `docs/index.html`. En [Settings → Pages](https://github.com/RODRAX360/bruma-cafe/settings/pages), elige **Deploy from a branch**, rama **main** y carpeta **/docs**. Después comprueba que abra [https://rodrax360.github.io/bruma-cafe/](https://rodrax360.github.io/bruma-cafe/). El QR ya está generado para esa URL; actívala antes de imprimirlo.
-
-## Illustrator y contenido
-
-`design/afiche-illustrator.svg` es un afiche vectorial editable en Illustrator. `design/logo-taza.svg` contiene el logotipo. Para modificar el menú, edita `docs/index.html`. `data/menu.json` es una copia estructurada del contenido de muestra. Si cambia la URL de la web, desde la raíz del repositorio ejecuta `python3 -m pip install qrcode[pil]` y luego `python3 generar_qr.py 'https://NUEVA-URL/'` antes de volver a compilar la app.
-
-## Verificación
-
-Se validó la estructura del proyecto, los archivos web y SVG, y se generó el QR para la URL de GitHub Pages. En este entorno no hay Unity ni un Android con ARCore, así que falta compilar y probar la app en un dispositivo real.
+Abre la carpeta `UnityProject` en Unity 2023.1.22f1. La escena `Assets/MenuAR.unity` contiene **AR Session**, **XR Origin (Mobile AR)**, **AR Camera** y el panel QR. La textura del QR y el enlace directo al PDF están en `Assets/Resources/`. En Android, activa ARCore en XR Plug-in Management y compila con Android Build Support. En el teléfono, **Abrir carta** abre el PDF; para escanear el QR visible en la propia pantalla se necesita otro dispositivo.
